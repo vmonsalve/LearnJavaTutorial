@@ -5,23 +5,41 @@ public class Player {
 	private int lives;
 	private int level;
 	private int score;
-	
-	public Player() { handleName = "Unknown Player"; }
+	private Weapon weapon;
 	
 	public Player(String handle){
-		setHandleName(handle);
-		lives = 3;
-		level = 1;
-		score = 0;
+		this.handleName = "Unknown Player";
+		this.lives = 3;
+		this.level = 1;
+		this.score = 0;
+		setDefaultWeapon();
 	}
 	
-	public String getHandleName() { return handleName; }
+	public Player(String handle, int level) {
+		setHandleName(handle);
+		setLevel(level);
+	}
+	
+	private void setDefaultWeapon() {
+		this.weapon = new Weapon("Ak47", 150, 20);
+	}
+	
+	public String getHandleName() { 
+		return handleName; 
+	}
 	
 	public void setHandleName(String handle){
-		if(handle.length() < 6)
-			return;
 		handleName= handle;
 	}
+	
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
 
 	public int getLives() {
 		return lives;
@@ -46,6 +64,4 @@ public class Player {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
-
 }
